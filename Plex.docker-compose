@@ -1,0 +1,19 @@
+version: "2.1"
+services:
+  plex:
+    image: linuxserver/plex
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+      - UMASK_SET=022 #optional
+      - PLEX_CLAIM=
+    volumes:
+      - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Plex/Config:/config'
+      - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Plex/Config:/transcode'
+      - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Series:/Series'
+      - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Movies:/Movies'
+      - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Music:/Music' 
+    restart: unless-stopped

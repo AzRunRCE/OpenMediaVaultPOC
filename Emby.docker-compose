@@ -1,0 +1,18 @@
+version: '2'
+services:
+    embyserver:
+        volumes:
+            - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Emby/Config:/config'
+            - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Series:/Series'
+            - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Movies:/Movies'
+            - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Music:/Music' 
+        devices:
+            - '/dev/dri:/dev/dri'
+        ports:
+            - '8096:8096'
+            - '8920:8920'
+        environment:
+            - UID=1000
+            - GID=100
+            - GIDLIST=100
+        image: 'emby/embyserver:latest'
