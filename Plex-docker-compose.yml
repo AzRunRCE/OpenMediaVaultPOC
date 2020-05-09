@@ -9,11 +9,10 @@ services:
       - PGID=1000
       - VERSION=docker
       - UMASK_SET=022 #optional
-      - PLEX_CLAIM=
+      - PLEX_CLAIM= #optional
     volumes:
-      - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Plex/Config:/config'
-      - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Plex/Config:/transcode'
-      - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Series:/Series'
-      - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Movies:/Movies'
-      - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Music:/Music' 
+      - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Plex:/config'
+      - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Series:/Series'
+      - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Movies:/Movies'
+      - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Music:/Music'
     restart: unless-stopped
