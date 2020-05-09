@@ -12,6 +12,8 @@ services:
         environment:
             - CREATE_TUN_DEVICE=true
             - OPENVPN_PROVIDER=CUSTOM
+            - OPENVPN_USERNAME=
+            - OPENVPN_PASSWORD=
             - WEBPROXY_ENABLED=false
             - LOCAL_NETWORK=192.168.0.0/16
             - TRANSMISSION_WEB_UI=transmission-web-control
