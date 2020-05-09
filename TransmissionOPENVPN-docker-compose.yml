@@ -2,17 +2,16 @@ version: '2'
 services:
     transmission-openvpn:
         volumes:
-            - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Downloads:/Downloads'
-            - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Series:/Series'
-            - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Movies:/Movies'
-            - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Transmission/Music:/Music'
+            - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Downloads:/Downloads'
+            - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Series:/Series'
+            - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Movies:/Movies'
+            - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Music:/Music'
+            - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Apps/Transmission/data:/data'
             - '/etc/localtime:/etc/localtime:ro'
-            - '/srv/dev-disk-by-id-ata-Samsung_SSD_840_EVO_250GB_mSATA_S1KPNSAF500258Y-part4/Config/OpenVPN/FR_France_15765.ovpn:/etc/openvpn/custom/default.ovpn'
+            - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Apps/OpenVPN/FR_France_15765.ovpn:/etc/openvpn/custom/default.ovpn'
         environment:
             - CREATE_TUN_DEVICE=true
             - OPENVPN_PROVIDER=CUSTOM
-            - OPENVPN_USERNAME=client_10550
-            - OPENVPN_PASSWORD=uCz6Ux1p3d
             - WEBPROXY_ENABLED=false
             - LOCAL_NETWORK=192.168.0.0/16
             - TRANSMISSION_WEB_UI=transmission-web-control
@@ -28,5 +27,5 @@ services:
                 max-size: 10m
         ports:
             - '9091:9091'
-        image: haugene/transmission-openvpn
+        image: haugene/transmission-openvpn:latest-armhf
         restart: unless-stopped
