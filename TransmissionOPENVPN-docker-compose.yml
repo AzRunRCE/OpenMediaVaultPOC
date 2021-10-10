@@ -7,15 +7,15 @@ services:
             - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Movies:/Movies'
             - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Music:/Music'
             - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Apps/Transmission/data:/data'
-            - '/etc/localtime:/etc/localtime:ro'
-            - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Apps/OpenVPN/FR_France_15765.ovpn:/etc/openvpn/custom/default.ovpn'
+            - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Apps/OpenVPN/FR_France_21999.ovpn:/etc/openvpn/custom/default.ovpn'
+            - '/srv/dev-disk-by-id-usb-SABRENT_SABRENT_DB9876543214E-0-0-part1/Apps/OpenVPN/openvpn-credentials.txt:/etc/openvpn/custom/openvpn-credentials.txt'
         environment:
             - CREATE_TUN_DEVICE=true
             - OPENVPN_PROVIDER=CUSTOM
             - OPENVPN_USERNAME=
             - OPENVPN_PASSWORD=
             - WEBPROXY_ENABLED=false
-            - LOCAL_NETWORK=192.168.0.0/16
+            - LOCAL_NETWORK=192.168.1.0/24
             - TRANSMISSION_WEB_UI=transmission-web-control
             - TRANSMISSION_DOWNLOAD_DIR=/Downloads
         cap_add:
@@ -28,6 +28,6 @@ services:
             options:
                 max-size: 10m
         ports:
-            - '9091:9091'
-        image: haugene/transmission-openvpn:latest-armhf
+            - '1337:9091'
+        image: haugene/transmission-openvpn:3.0.2-armhf
         restart: unless-stopped
